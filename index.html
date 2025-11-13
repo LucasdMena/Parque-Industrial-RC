@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+	<link rel="icon" href="logo.png" type="image/png" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
@@ -20,8 +21,12 @@
             padding: 0;
             margin: 0;
         }
-		/* 🔹 Encabezado */
-header {
+        </style>
+        <title>Parque Industrial de Río Colorado</title>
+    </head>
+        <body>
+    <!-- 🔹 Encabezado superior -->
+	header {
     background-color: #004d40;
     color: white;
     display: flex;
@@ -51,14 +56,9 @@ header h1 {
     height: calc(100vh - 60px);
     margin-top: 60px; /* evita que el encabezado tape el mapa */
 }
-        </style>
-        <title>Parque Industrial deee Río Colorado</title>
-    </head>
-    <body>
-    <!-- 🔹 Encabezado superior -->
     <header>
         <img src="logo.png" alt="Logo Río Colorado" />
-        <h1>Parque Industrial deee Río Colorado</h1>
+        <h1>Parque Industrial de Río Colorado</h1>
     </header>
 	<div id="map"></div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -74,7 +74,7 @@ header h1 {
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/ZonificacinPIRC_2.js"></script>
+        <script src="data/ZonificacinPIRC_1.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -158,16 +158,6 @@ header h1 {
                 popup._contentNode.classList.remove('media');
             }
         }
-        var title = new L.Control({'position':'topleft'});
-        title.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'info');
-            this.update();
-            return this._div;
-        };
-        title.update = function () {
-            this._div.innerHTML = '<h2>Parque Industrial de Río Colorado</h2>';
-        };
-        title.addTo(map);
         var zoomControl = L.control.zoom({
             position: 'topleft'
         }).addTo(map);
@@ -201,19 +191,7 @@ header h1 {
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        map.createPane('pane_GoogleHybrid_1');
-        map.getPane('pane_GoogleHybrid_1').style.zIndex = 401;
-        var layer_GoogleHybrid_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleHybrid_1',
-            opacity: 0.6,
-            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-            minZoom: 1,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 20
-        });
-        layer_GoogleHybrid_1;
-        function pop_ZonificacinPIRC_2(feature, layer) {
+        function pop_ZonificacinPIRC_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -249,11 +227,11 @@ header h1 {
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ZonificacinPIRC_2_0(feature) {
+        function style_ZonificacinPIRC_1_0(feature) {
             switch(String(feature.properties['Zonificación'])) {
                 case 'Agroindustrial':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_ZonificacinPIRC_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -268,7 +246,7 @@ header h1 {
                     break;
                 case 'Metalmecánica':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_ZonificacinPIRC_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -283,7 +261,7 @@ header h1 {
                     break;
                 case 'Minería':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_ZonificacinPIRC_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -298,7 +276,7 @@ header h1 {
                     break;
                 case 'Mixta':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_ZonificacinPIRC_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -313,7 +291,7 @@ header h1 {
                     break;
                 default:
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_ZonificacinPIRC_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -328,20 +306,20 @@ header h1 {
                     break;
             }
         }
-        map.createPane('pane_ZonificacinPIRC_2');
-        map.getPane('pane_ZonificacinPIRC_2').style.zIndex = 402;
-        map.getPane('pane_ZonificacinPIRC_2').style['mix-blend-mode'] = 'normal';
-        var layer_ZonificacinPIRC_2 = new L.geoJson(json_ZonificacinPIRC_2, {
+        map.createPane('pane_ZonificacinPIRC_1');
+        map.getPane('pane_ZonificacinPIRC_1').style.zIndex = 401;
+        map.getPane('pane_ZonificacinPIRC_1').style['mix-blend-mode'] = 'normal';
+        var layer_ZonificacinPIRC_1 = new L.geoJson(json_ZonificacinPIRC_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ZonificacinPIRC_2',
-            layerName: 'layer_ZonificacinPIRC_2',
-            pane: 'pane_ZonificacinPIRC_2',
-            onEachFeature: pop_ZonificacinPIRC_2,
-            style: style_ZonificacinPIRC_2_0,
+            dataVar: 'json_ZonificacinPIRC_1',
+            layerName: 'layer_ZonificacinPIRC_1',
+            pane: 'pane_ZonificacinPIRC_1',
+            onEachFeature: pop_ZonificacinPIRC_1,
+            style: style_ZonificacinPIRC_1_0,
         });
-        bounds_group.addLayer(layer_ZonificacinPIRC_2);
-        map.addLayer(layer_ZonificacinPIRC_2);
+        bounds_group.addLayer(layer_ZonificacinPIRC_1);
+        map.addLayer(layer_ZonificacinPIRC_1);
         const url = {"Nominatim OSM": "https://nominatim.openstreetmap.org/search?format=geojson&addressdetails=1&",
         "France BAN": "https://api-adresse.data.gouv.fr/search/?"}
         var photonControl = L.control.photon({
@@ -396,9 +374,8 @@ header h1 {
             }
         });
         var overlaysTree = [
-            {label: 'Zonificación PIRC<br /><table><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Agroindustrial0.png" /></td><td>Agroindustrial</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Metalmecánica1.png" /></td><td>Metalmecánica</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Minería2.png" /></td><td>Minería</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Mixta3.png" /></td><td>Mixta</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_4.png" /></td><td></td></tr></table>', layer: layer_ZonificacinPIRC_2},
-            {label: "Google Hybrid", layer: layer_GoogleHybrid_1},
-            {label: "OSM Standard", layer: layer_OSMStandard_0, radioGroup: 'bm' },]
+            {label: 'Zonificación PIRC<br /><table><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_1_Agroindustrial0.png" /></td><td>Agroindustrial</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_1_Metalmecánica1.png" /></td><td>Metalmecánica</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_1_Minería2.png" /></td><td>Minería</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_1_Mixta3.png" /></td><td>Mixta</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_1_4.png" /></td><td></td></tr></table>', layer: layer_ZonificacinPIRC_1},
+            {label: "OSM Standard", layer: layer_OSMStandard_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
