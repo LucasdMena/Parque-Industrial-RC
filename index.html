@@ -20,12 +20,46 @@
             padding: 0;
             margin: 0;
         }
+		/* 🔹 Encabezado */
+header {
+    background-color: #004d40;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+header img {
+    height: 40px;
+}
+
+header h1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* 🔹 Ajustar el mapa */
+#map {
+    height: calc(100vh - 60px);
+    margin-top: 60px; /* evita que el encabezado tape el mapa */
+}
         </style>
         <title>Parque Industrial de Río Colorado</title>
     </head>
     <body>
-        <div id="map">
-        </div>
+    <!-- 🔹 Encabezado superior -->
+    <header>
+        <img src="logo.png" alt="Logo Río Colorado" />
+        <h1>Parque Industrial de Río Colorado</h1>
+    </header>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
