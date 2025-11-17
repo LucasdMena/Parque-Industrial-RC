@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,7 +74,7 @@ header h1 {
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/ZonificacinPIRC_2.js"></script>
+        <script src="data/Zonificacin_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -203,7 +203,7 @@ header h1 {
             maxNativeZoom: 20
         });
         layer_GoogleHybrid_1;
-        function pop_ZonificacinPIRC_2(feature, layer) {
+        function pop_Zonificacin_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -239,11 +239,11 @@ header h1 {
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ZonificacinPIRC_2_0(feature) {
+        function style_Zonificacin_2_0(feature) {
             switch(String(feature.properties['Zonificación'])) {
                 case 'Agroindustrial':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_Zonificacin_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -258,7 +258,7 @@ header h1 {
                     break;
                 case 'Metalmecánica':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_Zonificacin_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -267,13 +267,13 @@ header h1 {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(165,165,165,0.6)',
+                fillColor: 'rgba(106,105,105,0.6)',
                 interactive: true,
             }
                     break;
                 case 'Minería':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_Zonificacin_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -288,7 +288,7 @@ header h1 {
                     break;
                 case 'Mixta':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_Zonificacin_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -301,9 +301,9 @@ header h1 {
                 interactive: true,
             }
                     break;
-                default:
+                case 'Laguna':
                     return {
-                pane: 'pane_ZonificacinPIRC_2',
+                pane: 'pane_Zonificacin_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,0.6)',
                 dashArray: '',
@@ -312,81 +312,43 @@ header h1 {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(64,158,213,0.6)',
+                fillColor: 'rgba(116,167,227,0.6)',
+                interactive: true,
+            }
+                    break;
+                case 'Uso Estratégico':
+                    return {
+                pane: 'pane_Zonificacin_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.6)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,0.6)',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_ZonificacinPIRC_2');
-        map.getPane('pane_ZonificacinPIRC_2').style.zIndex = 402;
-        map.getPane('pane_ZonificacinPIRC_2').style['mix-blend-mode'] = 'normal';
-        var layer_ZonificacinPIRC_2 = new L.geoJson(json_ZonificacinPIRC_2, {
+        map.createPane('pane_Zonificacin_2');
+        map.getPane('pane_Zonificacin_2').style.zIndex = 402;
+        map.getPane('pane_Zonificacin_2').style['mix-blend-mode'] = 'normal';
+        var layer_Zonificacin_2 = new L.geoJson(json_Zonificacin_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ZonificacinPIRC_2',
-            layerName: 'layer_ZonificacinPIRC_2',
-            pane: 'pane_ZonificacinPIRC_2',
-            onEachFeature: pop_ZonificacinPIRC_2,
-            style: style_ZonificacinPIRC_2_0,
+            dataVar: 'json_Zonificacin_2',
+            layerName: 'layer_Zonificacin_2',
+            pane: 'pane_Zonificacin_2',
+            onEachFeature: pop_Zonificacin_2,
+            style: style_Zonificacin_2_0,
         });
-        bounds_group.addLayer(layer_ZonificacinPIRC_2);
-        map.addLayer(layer_ZonificacinPIRC_2);
-        const url = {"Nominatim OSM": "https://nominatim.openstreetmap.org/search?format=geojson&addressdetails=1&",
-        "France BAN": "https://api-adresse.data.gouv.fr/search/?"}
-        var photonControl = L.control.photon({
-            url: url["Nominatim OSM"],
-            feedbackLabel: '',
-            position: 'topleft',
-            includePosition: true,
-            initial: true,
-            // resultsHandler: myHandler,
-        }).addTo(map);
-        photonControl._container.childNodes[0].style.borderRadius="10px"
-        // Create a variable to store the geoJSON data
-        var x = null;
-        // Create a variable to store the marker
-        var marker = null;
-        // Add an event listener to the Photon control to create a marker from the returned geoJSON data
-        var z = null;
-        photonControl.on('selected', function(e) {
-            console.log(photonControl.search.resultsContainer);
-            if (x != null) {
-                map.removeLayer(obj3.marker);
-                map.removeLayer(x);
-            }
-            obj2.gcd = e.choice;
-            x = L.geoJSON(obj2.gcd).addTo(map);
-            var label = typeof obj2.gcd.properties.label === 'undefined' ? obj2.gcd.properties.display_name : obj2.gcd.properties.label;
-            obj3.marker = L.marker(x.getLayers()[0].getLatLng()).bindPopup(label).addTo(map);
-            map.setView(x.getLayers()[0].getLatLng(), 17);
-            z = typeof e.choice.properties.label === 'undefined'? e.choice.properties.display_name : e.choice.properties.label;
-            console.log(e);
-            e.target.input.value = z;
-        });
-        var search = document.getElementsByClassName("leaflet-photon leaflet-control")[0];
-        search.classList.add("leaflet-control-search")
-        search.style.display = "flex";
-        search.style.backgroundColor="rgba(255,255,255,0.5)" 
-
-        // Create the new button element
-        var button = document.createElement("div");
-        button.id = "gcd-button-control";
-        button.className = "gcd-gl-btn fa fa-search search-button";
-
-        // Insert the button at the beginning of the search control
-        search.insertBefore(button, search.firstChild);
-        last = search.lastChild;
-        last.style.display = "none";
-        button.addEventListener("click", function (e) {
-            if (last.style.display === "none") {
-                last.style.display = "block";
-            } else {
-                last.style.display = "none";
-            }
-        });
+        bounds_group.addLayer(layer_Zonificacin_2);
+        map.addLayer(layer_Zonificacin_2);
         var overlaysTree = [
-            {label: 'Zonificación PIRC<br /><table><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Agroindustrial0.png" /></td><td>Agroindustrial</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Metalmecánica1.png" /></td><td>Metalmecánica</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Minería2.png" /></td><td>Minería</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_Mixta3.png" /></td><td>Mixta</td></tr><tr><td style="text-align: center;"><img src="legend/ZonificacinPIRC_2_4.png" /></td><td></td></tr></table>', layer: layer_ZonificacinPIRC_2},
+            {label: 'Zonificación<br /><table><tr><td style="text-align: center;"><img src="legend/Zonificacin_2_Agroindustrial0.png" /></td><td>Agroindustrial</td></tr><tr><td style="text-align: center;"><img src="legend/Zonificacin_2_Metalmecánica1.png" /></td><td>Metalmecánica</td></tr><tr><td style="text-align: center;"><img src="legend/Zonificacin_2_Minería2.png" /></td><td>Minería</td></tr><tr><td style="text-align: center;"><img src="legend/Zonificacin_2_Mixta3.png" /></td><td>Mixta</td></tr><tr><td style="text-align: center;"><img src="legend/Zonificacin_2_Laguna4.png" /></td><td>Laguna</td></tr><tr><td style="text-align: center;"><img src="legend/Zonificacin_2_UsoEstratégico5.png" /></td><td>Uso Estratégico</td></tr></table>', layer: layer_Zonificacin_2},
             {label: "Google Hybrid", layer: layer_GoogleHybrid_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
